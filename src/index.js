@@ -28,7 +28,7 @@ function searchCountry(e) {
     API.fetchCountries(countryName.trim())
         .then((data) => { 
             if (data.length > 10) {
-                Notiflix.Notify.failure("Too many matches found. Please enter a more specific name.");
+                Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
                 list.innerHTML = "";
             }
             else {
