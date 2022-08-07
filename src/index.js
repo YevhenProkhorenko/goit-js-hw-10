@@ -16,17 +16,26 @@ inputCountry.addEventListener('input', debounce(searchCountry, DEBOUNCE_DELAY));
 
 function searchCountry(e) {
     e.preventDefault();
-    
+    list.innerHTML = "";
     const countryName = inputCountry.value;
-    if (countryName === "") {
-        return
+    if (countryName === " ") {
+        list.innerHTML = "";
     }
     if (countryName.length > 10) {
         Notiflix.Notify.failure("Please enter a more specific name.");
     }
     else {
-    API.fetchCountries(countryName)
-    .then((data) => insertContent(data))
+    API.fetchCountries(countryName.trim())
+        .then((data) => { 
+            if (data.length > 10) {
+                Notiflix.Notify.failure("Too many matches found. Please enter a more specific name.");
+                list.innerHTML = "";
+            }
+            else {
+                return insertContent(data)
+            }
+            
+        })
     .catch(error => {        
         Notiflix.Notify.failure(error);
     })  
