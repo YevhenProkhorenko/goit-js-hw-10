@@ -37,7 +37,7 @@ function searchCountry(e) {
             
         })
     .catch(error => {        
-        Notiflix.Notify.failure(error);
+        Notiflix.Notify.info("Enter country");
     })  
     } 
 }
