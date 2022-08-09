@@ -30,14 +30,16 @@ function searchCountry(e) {
             if (data.length > 10) {
                 Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
                 list.innerHTML = "";
+                countryInfo.innerHTML = " ";
             }
             
-            if (data.length === 1) {    
-                ;
-                return insertInfo(data);
+            if (data.length === 1) {
+                insertOneCountryInfo(data);
+                inputCountry.blur();
+                clear();
             }
             else {
-                return insertContent(data);
+                insertListCountry(data);
             }
             
         })
@@ -47,6 +49,9 @@ function searchCountry(e) {
     } 
 }
 
+function clear() {
+    inputCountry.setAttribute('onfocus', "this.value=''");       
+}
 
 
 function createListItem(item) {
@@ -84,12 +89,12 @@ const generateCountry = (array) => array?.reduce((acc, item) => acc + createList
 
 const generateInfo = (array) => array?.reduce((acc, item) => acc + createCountryInfo(item), "");
 
-const insertContent = (array) => {
+const insertListCountry = (array) => {
     const result = generateCountry(array);
     list.insertAdjacentHTML("beforeend", result);
 }
 
-const insertInfo = (array) => {
+const insertOneCountryInfo = (array) => {
     const result = generateInfo(array);
     countryInfo.insertAdjacentHTML("beforeend", result)
 }
