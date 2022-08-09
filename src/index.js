@@ -50,7 +50,7 @@ function searchCountry(e) {
 }
 
 function clear() {
-    inputCountry.setAttribute('onfocus', "this.value=''");       
+    inputCountry.setAttribute('onfocus', "this.value=''");    
 }
 
 
