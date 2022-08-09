@@ -12,6 +12,7 @@ list.style.listStyleType = "none";
 
 
 inputCountry.addEventListener('input', debounce(searchCountry, DEBOUNCE_DELAY));
+inputCountry.addEventListener('click', () => countryInfo.innerHTML = "");
 
 
 function searchCountry(e) {
@@ -36,7 +37,7 @@ function searchCountry(e) {
             if (data.length === 1) {
                 insertOneCountryInfo(data);
                 inputCountry.blur();
-                clear();
+                clear();                
             }
             else {
                 insertListCountry(data);
@@ -50,7 +51,8 @@ function searchCountry(e) {
 }
 
 function clear() {
-    inputCountry.setAttribute('onfocus', "this.value=''");    
+    inputCountry.setAttribute('onfocus', "this.value=''");
+    
 }
 
 
