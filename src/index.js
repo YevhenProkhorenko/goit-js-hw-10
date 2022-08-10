@@ -75,7 +75,7 @@ function createCountryInfo(item) {
     </table> 
     <p><b>Capital:</b> ${item.capital ? item.capital : ""}</p>
         <p><b>Population:</b> ${item.population ? item.population : ""}</p>
-        <p><b>Language(s):</b> ${Object.keys(item.languages) ? Object.keys(item.languages) : ""}</p>`
+        <p><b>Language(s):</b> ${Object.values(item.languages) ? Object.values(item.languages) : ""}</p>`
 }
      
         
