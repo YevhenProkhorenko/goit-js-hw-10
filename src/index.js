@@ -12,7 +12,6 @@ list.style.listStyleType = "none";
 
 
 inputCountry.addEventListener('input', debounce(searchCountry, DEBOUNCE_DELAY));
-inputCountry.addEventListener('click', () => countryInfo.innerHTML = "");
 
 
 function searchCountry(e) {
@@ -36,8 +35,8 @@ function searchCountry(e) {
             
             if (data.length === 1) {
                 insertOneCountryInfo(data);
-                inputCountry.blur();
-                clear();                
+                // inputCountry.blur();
+                // clear();                
             }
             else {
                 insertListCountry(data);
@@ -49,12 +48,6 @@ function searchCountry(e) {
     })  
     } 
 }
-
-function clear() {
-    inputCountry.setAttribute('onfocus', "this.value=''");
-    
-}
-
 
 function createListItem(item) {
     
@@ -93,10 +86,10 @@ const generateInfo = (array) => array?.reduce((acc, item) => acc + createCountry
 
 const insertListCountry = (array) => {
     const result = generateCountry(array);
-    list.insertAdjacentHTML("beforeend", result);
+    list.innerHTML = result;
 }
 
 const insertOneCountryInfo = (array) => {
     const result = generateInfo(array);
-    countryInfo.insertAdjacentHTML("beforeend", result)
+    countryInfo.innerHTML = result;
 }
